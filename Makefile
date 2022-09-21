@@ -6,6 +6,10 @@ fmt:
 dev:
 	air
 
+.PHONY: debug
+debug:
+	env GODEBUG=gctrace=1 air
+
 .PHONY: hooks
 hooks:
 	cp hooks/pre-commit .git/hooks/pre-commit
