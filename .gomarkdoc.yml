@@ -1,0 +1,7 @@
+embed: true
+output: "{{.Dir}}/README.md"
+
+repository:
+    url: https://github.com/bkonkle/go-garbage
+    defaultBranch: main
+    path: /

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Check for changes to Go files
+CHANGED_FILES=$(git diff --cached --name-only -- '*.go')
+
+if [[ $CHANGED_FILES == "" ]]; then
+	# If empty, output a message and exit
+    echo "No Go changes since the last commit"
+else
+	# Otherwise, update the reference documentation
+	echo "Updating README docs..."
+
+    make docs
+
+	for file in $CHANGED_FILES; do
+		if test -f "$(dirname $file)/README.md"; then
+			git add $(dirname $file)/README.md
+		fi
+	done
+fi
